@@ -1,0 +1,388 @@
+/* ================================================================
+   SonicTrace — Professional Design System
+   Inspired by Google Meet & Zoom's clean, dark professional aesthetic
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Core Palette — Deep dark like Google Meet */
+  --bg-base:        #0a0e1a;
+  --bg-surface:     #111827;
+  --bg-surface-2:   #1a2235;
+  --bg-surface-3:   #1f2d42;
+  --bg-overlay:     rgba(10, 14, 26, 0.85);
+
+  /* Brand */
+  --brand-blue:     #2563eb;
+  --brand-blue-lt:  #3b82f6;
+  --brand-indigo:   #6366f1;
+  --brand-cyan:     #06b6d4;
+  --brand-glow:     rgba(37, 99, 235, 0.18);
+
+  /* Semantic */
+  --accent-green:   #22c55e;
+  --accent-amber:   #f59e0b;
+  --accent-red:     #ef4444;
+  --accent-rose:    #f43f5e;
+  --accent-violet:  #8b5cf6;
+
+  /* Text */
+  --text-100: #f9fafb;
+  --text-200: #e5e7eb;
+  --text-300: #9ca3af;
+  --text-400: #6b7280;
+  --text-500: #4b5563;
+
+  /* Borders */
+  --border-subtle:  rgba(255,255,255,0.05);
+  --border-default: rgba(255,255,255,0.09);
+  --border-strong:  rgba(255,255,255,0.14);
+  --border-brand:   rgba(37,99,235,0.35);
+
+  /* Speaker colors */
+  --spk-1: #3b82f6;
+  --spk-2: #8b5cf6;
+  --spk-3: #22c55e;
+  --spk-4: #f59e0b;
+  --spk-5: #f43f5e;
+  --spk-6: #06b6d4;
+  --spk-7: #ec4899;
+  --spk-8: #84cc16;
+
+  /* Radii */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   20px;
+  --r-2xl:  24px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.6);
+  --shadow-xl:    0 24px 64px rgba(0,0,0,0.7);
+  --shadow-brand: 0 4px 24px rgba(37,99,235,0.25);
+
+  /* Motion */
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast:  120ms;
+  --dur-base:  200ms;
+  --dur-slow:  350ms;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-100);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root { position: relative; z-index: 1; }
+
+/* ── Typography ──────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.75rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: 1.2rem; }
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Gradient utilities ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-brand {
+  background: linear-gradient(135deg, var(--brand-blue-lt), var(--brand-indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass / Surface cards ───────────────────────────────────────── */
+.surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-xl);
+}
+.glass {
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-xl);
+}
+.glass-sm {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease-snappy);
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Primary — Google Meet style blue */
+.btn-primary {
+  background: var(--brand-blue);
+  color: #fff;
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  background: #1e40af;
+}
+
+/* Ghost */
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-200);
+  border: 1px solid var(--border-default);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--border-strong);
+  color: var(--text-100);
+}
+
+/* Danger */
+.btn-danger {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.25);
+}
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239,68,68,0.25);
+  border-color: rgba(239,68,68,0.4);
+}
+
+/* Danger solid (leave button) */
+.btn-danger-solid {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-danger-solid:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* Sizes */
+.btn-sm { padding: 6px 12px; font-size: 0.8rem; border-radius: var(--r-xs); }
+.btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: var(--r-md); }
+
+/* Icon buttons */
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--r-sm);
+}
+.btn-icon-xl {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: var(--r-full);
+}
+
+.btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ── Control Bar specific button styles ──────────────────────────── */
+.ctrl-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-full);
+  border: none;
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease-snappy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-100);
+}
+.ctrl-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.14);
+  transform: scale(1.06);
+}
+.ctrl-btn:active:not(:disabled) { transform: scale(0.96); }
+.ctrl-btn.active {
+  background: rgba(255,255,255,0.14);
+}
+.ctrl-btn.danger {
+  background: rgba(239,68,68,0.18);
+  color: #fca5a5;
+}
+.ctrl-btn.danger:hover:not(:disabled) {
+  background: rgba(239,68,68,0.28);
+}
+.ctrl-btn.leave {
+  background: #ef4444;
+  color: #fff;
+}
+.ctrl-btn.leave:hover:not(:disabled) {
+  background: #dc2626;
+  transform: scale(1.06);
+}
+.ctrl-btn-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-300);
+}
+
+/* ── Input ───────────────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  background: var(--bg-surface-2);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--r-sm);
+  color: var(--text-100);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--brand-blue-lt);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+.input::placeholder { color: var(--text-400); }
+
+/* ── Badge ───────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--r-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.badge-blue   { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+.badge-green  { background: rgba(34,197,94,0.12);  color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+.badge-amber  { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+.badge-red    { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.badge-violet { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); }
+
+/* ── Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+/* ── Animations ──────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulseRed {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes ripple {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.anim-fade-up   { animation: fadeUp var(--dur-slow) var(--ease-snappy) both; }
+.anim-fade-in   { animation: fadeIn var(--dur-base) ease both; }
+.anim-slide-r   { animation: slideRight var(--dur-slow) var(--ease-snappy) both; }
+.anim-scale-in  { animation: scaleIn var(--dur-base) var(--ease-snappy) both; }
+.anim-spin      { animation: spin 0.8s linear infinite; }
+.anim-float     { animation: float 4s ease-in-out infinite; }
+
+/* ── Spinner ─────────────────────────────────────────────────────── */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-default);
+  border-top-color: var(--brand-blue-lt);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Live indicator ──────────────────────────────────────────────── */
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  animation: pulseRed 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}

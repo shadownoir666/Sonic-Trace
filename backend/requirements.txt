@@ -1,5 +1,6 @@
 fastapi
 uvicorn[standard]
+python-multipart
 pydantic
 python-dotenv
 
@@ -15,5 +16,13 @@ pydantic-settings
 transformers
 huggingface-hub
 uuid
-groq
+google-generativeai
 webrtcvad-wheels
+resemblyzer
+
+# Meeting intelligence additions
+aiosqlite
+chromadb
+sentence-transformers
+scipy
+matplotlib
