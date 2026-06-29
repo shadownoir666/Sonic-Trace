@@ -13,7 +13,7 @@ FastAPI/Uvicorn Python Backend (Port 8000)
   ├── Silero VAD + Resemblyzer (Diarization)
   ├── OpenAI Whisper (ASR)
   ├── HuggingFace Emotion (Analysis)
-  ├── ChromaDB (RAG Vector Store)
+  ├── Qdrant (RAG Vector Store)
   ├── SQLite / aiosqlite (Meeting DB)
   └── Gemini 1.5 (Summary + Chat)
 ```
@@ -42,7 +42,7 @@ copy .env.example .env
 .\myenv\Scripts\activate
 
 # Install new dependencies
-pip install aiosqlite chromadb sentence-transformers scipy matplotlib
+pip install aiosqlite qdrant-client sentence-transformers scipy matplotlib
 
 # Start the server
 uvicorn app.main:app --reload --port 8000
@@ -76,6 +76,23 @@ npm run dev
 
 Then open http://localhost:5173
 
+## Testing
+
+You can run individual integration and unit tests for the Python backend modules. Make sure your virtual environment is active (`.\myenv\Scripts\activate`) and you are in the `backend/` directory:
+
+* **Verify Qdrant Vector Store Updates**:
+  ```powershell
+  python test_qdrant_update.py
+  ```
+* **Verify Speaker Diarization**:
+  ```powershell
+  python test_diarizer.py <path_to_audio_file.wav>
+  ```
+* **Verify Full Diarization + Transcription Pipeline**:
+  ```powershell
+  python test_pipeline.py <path_to_audio_file.wav>
+  ```
+
 ## Usage
 
 1. Open the app → Enter your name → **Create Meeting** (gets a room code like `ABC123`)
@@ -95,7 +112,7 @@ Then open http://localhost:5173
 | `WHISPER_MODEL_SIZE` | Optional | `medium` | Whisper model size |
 | `DEVICE` | Optional | `cuda` | `cuda` or `cpu` |
 | `SONIC_DB_PATH` | Optional | `data/sonic_trace.db` | SQLite DB path |
-| `CHROMA_DIR` | Optional | `data/chroma_db` | ChromaDB storage path |
+| `QDRANT_DIR` | Optional | `data/qdrant_db` | Qdrant database storage path |
 
 ### `node-server/.env`
 | Variable | Required | Default | Description |
