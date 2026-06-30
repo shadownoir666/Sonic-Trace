@@ -22,7 +22,7 @@ resemblyzer
 
 # Meeting intelligence additions
 aiosqlite
-chromadb
+qdrant-client
 sentence-transformers
 scipy
 matplotlib

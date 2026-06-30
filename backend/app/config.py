@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     audio_dir: str = "data/audio"
     sonic_db_path: str = "data/sonic_trace.db"
     chroma_dir: str = "data/chroma_db"
+    qdrant_dir: str = "data/qdrant_db"
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -24,3 +25,4 @@ if settings.device == "cuda" and not torch.cuda.is_available():
 import os
 os.environ["SONIC_DB_PATH"] = settings.sonic_db_path
 os.environ["CHROMA_DIR"] = settings.chroma_dir
+os.environ["QDRANT_DIR"] = settings.qdrant_dir
